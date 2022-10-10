@@ -1,0 +1,26 @@
+*{
+    
+    margin: auto;
+    padding: auto;
+}
+
+body{
+    background-color: rgba(26, 106, 107, 0.701);
+   
+}
+
+h3{
+    font-size: 40px;
+}
+
+.col-md-5{
+    margin-top: 8rem;
+}
+
+.col-md-5{
+    margin-top: 2rem;
+}
+
+.card{
+    background: rgba(0, 0, 0, 0.246);
+}

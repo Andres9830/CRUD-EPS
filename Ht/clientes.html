@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>EPS CAPITAL</title>
+  <meta name="author" content="Nelson Andres Montealegre">
+  <meta name="description" content="Blog de tecnologias como HTML,CSS,JavaScript">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+
+  <link type="image/png" sizes="32x32" rel="icon" href="./img/icons8-super-mario-ios-16-32.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/styles_blog.css">
+  <link rel="stylesheet" href="../css/page.css">
+.
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto+Condensed&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/904c4c8920.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body  onload="loadApp()" >
+
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="./inicio.html" target="_blank"> <img id="logo" src="../img/logo.jpg"  width="230" height="50"  >INICIO</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active"  href="clientes.html" target="_blank">AFILIADOS</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="empleadores.html" target="_blanks" >EMPLEADORES</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="independiente.html">INDEPENDIENTES</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">BUSCAR</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <h3 id="titulo"> REGISTRO DE CITAS </h3>
+  </header>
+
+  <section class="container-center" id="padre" poster="poster.JPG">
+    <div id="panelClientes">
+      <article class="post">
+        <div class="container mt-3">
+          <h2> CITAS EPS </h2>
+          <form action="/action_page.php" id="formClientes">
+            <div class="mb-3 mt-3">
+              <label for="tIdentidad">TIPO. IDENTIDA</label>
+              <select name="tIdentidad" id="tIdentidad" class="form-control">
+                <option value="0"></option>
+                <option value="Cedula Ciudadania">Cedula Ciudadania</option>
+                <option value="Cedula Extranjera">Cedula Extranjera</option>
+                <option value="T.I">T.I</option>
+                <option value="otro">otro</option>
+            </select>
+            </div>
+            <div class="mb-3">
+              <label for="numero">NUMERO:</label>
+              <input type="text" class="form-control" id="numero" placeholder="No. Identidad" name="numero" required>
+            </div>
+            <div class="mb-3 mt-3">
+              <label for="nombre">NOMBRE:</label>
+              <input type="text" class="form-control" id="nombre" placeholder="Nombre" name="nombre" required>
+            </div>
+            <div class="mb-3 mt-3">
+              <label for="fechaHora">FECHA Y HORA:</label>
+              <input type="datetime-local" class="form-control" id="fechaHora" name="fechaHora" required>
+            </div>
+            <div class="mb-3 mt-3">
+              <label for="especialista">ESPECIALISTA</label>
+              <select name="especialista" id="especialista" class="form-control">
+                <option value="0"></option>
+                <option value="MEDICO GENERAL">MEDICO GENERAL</option>
+                <option value="OFMATOLOGIA">OFMATOLOGIA</option>
+                <option value="PEDIATRIA">PEDIATRIA</option>
+                <option value="ODONTOLOGIA">ODONTOLOGIA</option>
+                <option value="CIRUJANO GENERAL">CIRUJANO GENERAL</option>    
+            </select>
+            </div>
+            <div id="botones">
+              <button type="button" class="btn btn-success" onclick="crearCliente()">
+                <i class="fa-solid fa-plus"></i> &nbsp; Crear</button>
+              <button type="button" class="btn btn-warning" onclick="editarClienteById()">
+                <i class="fa-regular fa-pen-to-square"></i> &nbsp; Editar</button>
+              <button type="button" class="btn btn-info" onclick="mostrarClienteId()">
+                <i class="fa-solid fa-circle-info"></i> &nbsp; Buscar</button>
+              <button type="button" class="btn btn-danger" onclick="eliminarClienteById()">
+                <i class="fa-solid fa-trash-can"></i> &nbsp; Borrar</button>
+            </div>
+            <div id="editar">
+              <h6>........................PARA EDITAR</h6>
+              <p>Ingrese numero de identificacion primero <br> luego rellene los demas campos <br> con datos nuevos <br> Para <b>buscar</b> y <b>borrar</b> con el <br> numero de identificacion </p>
+            </div>
+          </form>
+        </div>
+      </article>
+
+      <article class="post">
+        <h5>Lista Citas</h5>
+        <hr>
+        <div id="lista">
+
+        </div>
+
+        <div class="container mt-3">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>T. IDENTIDAD</th>
+                <th>NUMERO</th>
+                <th>NOMBRE</th>
+                <th>FECHA Y HORA</th>
+                <th>ESPECIALISTA</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyCliente">
+
+            </tbody>
+          </table>
+        </div>
+
+      </article>
+    </div>
+
+  </section>
+
+
+
+
+  <script src="../Javasp/clientes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</body>
+
+</html>

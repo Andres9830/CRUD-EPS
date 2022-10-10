@@ -1,0 +1,10 @@
+#panelClientes{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    min-height: 600px;
+}
+#paneleClientes article{
+    flex-direction: row;
+    justify-content: space-around;
+}
